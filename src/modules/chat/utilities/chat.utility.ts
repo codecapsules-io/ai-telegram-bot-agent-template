@@ -29,7 +29,8 @@ export class ChatUtility {
           case ChatPromptContentType.FILE:
             const fileContent = content as ChatPromptContentFileDto;
             return {
-              type: "text",
+              type: "file",
+              name: fileContent.name,
               text: fileContent.text,
             };
         }

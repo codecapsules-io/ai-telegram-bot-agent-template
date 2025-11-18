@@ -100,7 +100,8 @@ export class MemoryService {
     const messages = await this.store.mget(keys);
     return messages
       .filter((message) => message !== undefined)
-      .map((message) => JSON.parse(this.decode(message)) as AgentMessage);
+      .map((message) => JSON.parse(this.decode(message)) as AgentMessage)
+      .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
   }
 
   async clearMessages(chatId: string) {

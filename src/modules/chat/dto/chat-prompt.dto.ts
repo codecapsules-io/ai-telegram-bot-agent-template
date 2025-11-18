@@ -31,5 +31,6 @@ export interface ChatPromptContentImageDto extends ChatPromptContentDto {
 
 export interface ChatPromptContentFileDto extends ChatPromptContentDto {
   type: ChatPromptContentType.FILE;
+  name: string;
   text: string;
 }

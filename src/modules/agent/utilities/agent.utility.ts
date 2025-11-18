@@ -62,7 +62,7 @@ export class AgentUtility {
       case "file":
         return {
           type: "text",
-          text: content.text,
+          text: `This is one of the files, named "${content.name}". The contents of the file are:\n${content.text}`,
         };
 
       default:
