@@ -461,22 +461,17 @@
       },
       "ChatPromptContentFile": {
         "type": "object",
-        "required": ["type", "name", "base64"],
+        "required": ["type", "text"],
         "properties": {
           "type": {
             "type": "string",
             "enum": ["file"],
             "description": "The type of content block"
           },
-          "name": {
+          "text": {
             "type": "string",
-            "description": "The filename",
-            "example": "document.pdf"
-          },
-          "base64": {
-            "type": "string",
-            "description": "Base64 encoded file data",
-            "example": "JVBERi0xLjQKJeLjz9MK...=="
+            "description": "Text content of the file",
+            "example": "This is the text content of the file"
           }
         }
       },
