@@ -30,6 +30,5 @@ export interface AgentMessageContentImage {
 
 export interface AgentMessageContentFile {
   type: "file";
-  name: string;
-  base64: string;
+  text: string;
 }

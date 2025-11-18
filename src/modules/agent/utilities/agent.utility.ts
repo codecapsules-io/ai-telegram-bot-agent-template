@@ -61,8 +61,8 @@ export class AgentUtility {
         };
       case "file":
         return {
-          type: "file_url",
-          file_url: content.base64,
+          type: "text",
+          text: content.text,
         };
 
       default:
