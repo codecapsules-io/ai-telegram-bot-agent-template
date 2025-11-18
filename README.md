@@ -5,13 +5,13 @@
 </div>
 <br/>
 
-# Code Capsules Base Agent
+# Code Capsules Telegram Bot Agent
 
-An Express API that exposes a Base AI Agent. Built with TypeScript and LangChain.
+An Express API that exposes a Telegram Bot AI Agent. Built with TypeScript and LangChain with Telegram integration.
 
 ## Overview
 
-This API provides a LangChain-based Base Agent with RAG (Retrieval-Augmented Generation) capabilities. It allows for the use of a Redis vector store and supports streaming responses for real-time chat interactions.
+This API provides a LangChain-based Telegram Bot Agent with RAG (Retrieval-Augmented Generation) capabilities. Integrations with Telegram allow the Agent to be prompted via a Telegram chat. It allows for the use of a Redis vector store and supports streaming responses for real-time chat interactions.
 
 ### Key topics:
 
@@ -21,6 +21,10 @@ This API provides a LangChain-based Base Agent with RAG (Retrieval-Augmented Gen
 - [Customisation](#customization)
 
 ## Features
+
+### Telegram Bot Communication
+
+Chat with the Agent via a Telegram Bot. To set up the bot, see [Telegram Bot Setup](#telegram-bot-setup)
 
 ### RAG (Retrieval-Augmented Generation)
 
@@ -61,6 +65,43 @@ To create your own Agent Capsule in Code Capsules with this functionaity:
 3. Link your new repo to the capsule
 4. Mark the capsule as 'using a Code Capsules template' and enter your provider, model, and API key details
 5. Finish the setup and wait for the capsule to build
+
+## Telegram Setup
+
+### Create the bot in Telegram
+
+1. Open Telegram and search for [BotFather](https://t.me/botfather)
+
+   a. Type `/newbot` to create the bot
+
+   b. When prompted, give the bot a name
+
+   c. When prompted, give the bot a username
+
+   d. Once created, the bot will provide you with a token. Copy this token and save it for later.
+
+### Configure in your local environment
+
+1. In your local environment, create a `.env` file and add the following:
+
+```bash
+TELEGRAM_BOT_TOKEN=your_bot_token
+```
+
+2. Save the changed environment variables
+3. Restart your application
+
+### Configure in your Capsule
+
+1. Go to the **Config** tab of your Agent Capsule
+2. Edit the environment variables using **Text Editor** and add the following:
+
+```bash
+TELEGRAM_BOT_TOKEN=your_bot_token
+```
+
+3. Save the changed environment variables
+4. Wait for the capsule to restart. Once complete, your Agent Capsule will now expose your Telegram bot.
 
 ## Vector Store Setup (Redis)
 
@@ -110,7 +151,7 @@ REDIS_URL=your_redis_instance_url
 
 ## Agent Tools
 
-The Base Agent has access to the following tools:
+The Telegram Bot Agent has access to the following tools:
 
 ### 1. **retrieve**
 
@@ -153,6 +194,9 @@ REDIS_URL=redis://localhost:6379
 # Host documentation (Optional)
 SHOW_DOCUMENTATION=true
 
+
+# Telegram Bot (Required)
+TELEGRAM_BOT_TOKEN=your-bot-token
 
 ```
 
@@ -197,7 +241,7 @@ npm start
   - **Response**: Confirmation of context addition
   - **Auth**: Required (`X-CC-API-KEY`, `X-CC-EMAIL`)
 
-### Documentation (only visible if `SHOW_DOCUMENTATION` env var is set to `true`)
+### Documentation
 
 - `GET /api-docs` - Swagger UI (public, no auth required)
 - `GET /swagger.json` - Swagger JSON (public, no auth required)
@@ -244,7 +288,7 @@ When using Code Capsules, ensure that the Agent Capsule is rebuild and deployed 
 
 ### Change Vector Store
 
-The RAG module currently uses Redis or an in-memory vector store. To switch to another vector store (Pinecone, Weaviate, etc.), modify `src/modules/rag/services/vector-store.service.ts`.
+The RAG module currently uses Redis. To switch to another vector store (Pinecone, Weaviate, etc.), modify `src/modules/rag/services/vector-store.service.ts`.
 
 ## Tech Stack
 
@@ -254,6 +298,7 @@ The RAG module currently uses Redis or an in-memory vector store. To switch to a
 - **LLM Provider**: Google Generative AI
 - **Vector Store**: Redis (or Memory for fallback)
 - **Documentation**: Swagger/OpenAPI
+- **Telegram**: Telegram Bot
 
 ## Development Notes
 

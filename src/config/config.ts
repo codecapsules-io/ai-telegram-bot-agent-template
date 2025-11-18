@@ -28,6 +28,9 @@ export const config = {
   // vector store configuration
   redisUrl: loadEnvVar("REDIS_URL", ""),
 
+  // telegram configuration
+  telegramBotToken: loadEnvVar("TELEGRAM_BOT_TOKEN", ""),
+
   // agent configuration
   providerApiKey: loadEnvVar("PROVIDER_API_KEY", ""),
   providerName: loadEnvVar("PROVIDER_NAME", "google-genai"),

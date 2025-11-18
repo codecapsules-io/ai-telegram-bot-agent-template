@@ -5,6 +5,8 @@ import {
   MemoryService,
   EmbeddingsService,
   ChatHistoryService,
+  TelegramBotService,
+  FileService,
 } from "./modules";
 
 export async function init() {
@@ -14,4 +16,6 @@ export async function init() {
   MemoryService.init();
   ChatHistoryService.init();
   await ChatService.init();
+  FileService.init();
+  TelegramBotService.init();
 }
