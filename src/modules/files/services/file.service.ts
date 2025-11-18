@@ -99,6 +99,15 @@ export class FileService {
     });
   }
 
+  public readFile(filePath: string): Promise<string> {
+    return new Promise((resolve, reject) => {
+      fs.readFile(filePath, (err, data) => {
+        if (err) reject(err);
+        resolve(data.toString());
+      });
+    });
+  }
+
   public deleteFile(filePath: string): Promise<void> {
     return new Promise((resolve, reject) => {
       fs.unlink(filePath, (err) => {
