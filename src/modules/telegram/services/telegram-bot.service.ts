@@ -125,13 +125,11 @@ export class TelegramBotService {
       defaultExtension: "jpg",
     });
 
-    const fileName =
-      imageName ||
-      messageContents.content.push({
-        type: ChatPromptContentType.IMAGE,
-        name: imageName || image.file_path?.split("/").pop() || "unknown",
-        base64: photoBase64,
-      });
+    messageContents.content.push({
+      type: ChatPromptContentType.IMAGE,
+      name: imageName || image.file_path?.split("/").pop() || "unknown",
+      base64: photoBase64,
+    });
   }
 
   private async addFileToMessageContents(
