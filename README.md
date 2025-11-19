@@ -83,6 +83,16 @@ REDIS_URL=your_copied_connection_string
 6. Save the changed environment variables
 7. Wait for the capsule to restart. Once complete, your Agent Capsule will now use this Redis Capsule as its vector store.
 
+> [!WARNING]
+>
+> **Please note:** Agent Capsule templates have been built with the capabilities of using either a Redis or in-memory vector store. When using the in-memory option (i.e. no Redis Capsule is linked), it is recommended to scale the Agent Capsule to the following in order to ensure optimal performance:
+>
+> - CPU 28%
+> - Memory 1GB
+> - Replicas 1
+>
+> To do this, visit the Agent Capsule [Scale](https://codecapsules.io/docs/agent-capsule/scale) page.
+
 ### Via local/other implementations
 
 To link a vector store:
